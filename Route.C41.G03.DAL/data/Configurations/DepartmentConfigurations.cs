@@ -9,7 +9,7 @@ using Route.C41.G03.DAL.models;
 
 namespace Route.C41.G03.DAL.data.Configurations
 {
-    internal class DepartmentConfigurations : IEntityTypeConfiguration<Department>
+    public class DepartmentConfigurations : IEntityTypeConfiguration<Department>
     {
         public void Configure(EntityTypeBuilder<Department> builder)
         {

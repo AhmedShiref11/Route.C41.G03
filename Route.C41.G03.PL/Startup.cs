@@ -35,7 +35,7 @@ namespace Route.C41.G03.PL
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer("Server=.; Database = MVCApllication; Trusted_Connection=True; MultipleActiveResultSets=True");
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
 
             });
 
