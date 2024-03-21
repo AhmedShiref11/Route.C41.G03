@@ -5,18 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using System.Text; 
 using System.Threading.Tasks;
 
 namespace Route.C41.G03.DAL.data
 {
-    internal class ApplicationDContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options) :base(options)
+        {
         
-           =>optionsBuilder.UseSqlServer("Server=.; Database = MVCApllication; Trusted_Connection=True; MultipleActiveResultSets=True");
-        
+        }
 
+     
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
            // modelBuilder.ApplyConfiguration<Department>(new Configurations.DepartmentConfigurations());
