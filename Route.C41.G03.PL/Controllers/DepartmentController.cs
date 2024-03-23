@@ -1,0 +1,42 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Route.C41.G03.BLL.Interfaces;
+using Route.C41.G03.BLL.Repostiries;
+using Route.C41.G03.DAL.models;
+
+namespace Route.C41.G03.PL.Controllers
+{
+    public class DepartmentController : Controller
+    {
+        private readonly IDepartmentRepository _departmentRepo; 
+
+        public DepartmentController(IDepartmentRepository departmentRepo)
+        { 
+          _departmentRepo = departmentRepo;
+        }
+
+        public IActionResult Index()
+        {
+            var department =_departmentRepo.GetAll();
+            return View( department);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult Create(Department department)
+        {
+            if(ModelState.IsValid) 
+            {
+                var count = _departmentRepo.Add(department);
+                if (count > 0)
+                    return RedirectToAction(nameof(Index));
+            }
+            return View(department);
+        }
+    }
+}

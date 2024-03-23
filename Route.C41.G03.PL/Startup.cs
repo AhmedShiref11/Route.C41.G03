@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Route.C41.G03.BLL.Interfaces;
+using Route.C41.G03.BLL.Repostiries;
 using Route.C41.G03.DAL.data;
 using System;
 using System.Collections.Generic;
@@ -39,6 +41,7 @@ namespace Route.C41.G03.PL
 
             });
 
+            services.AddScoped<IDepartmentRepository,DepartmentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
